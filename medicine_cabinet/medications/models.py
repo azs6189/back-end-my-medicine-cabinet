@@ -1,7 +1,8 @@
 # A Django model is a table in your database
 
 from django.db import models
-from rest_framework.serializers import ModelSerializer
+# from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 
 # Create your models here.
 class Medication(models.Model):
@@ -13,6 +14,7 @@ class Medication(models.Model):
     pap_application_link = models.URLField(max_length=200, blank=True, null=True)
 
 # Converts Medication model instances to JSON representations (serialization)
-class MedicationSerializer(ModelSerializer):
-    model = Medication
-    fields = ("id", "brand_name", "medication_description", "pap_name", "pap_info_link", "pap_eligibility_link", "pap_application_link")
+class MedicationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Medication
+        fields = ("id", "brand_name", "medication_description", "pap_name", "pap_info_link", "pap_eligibility_link", "pap_application_link")
