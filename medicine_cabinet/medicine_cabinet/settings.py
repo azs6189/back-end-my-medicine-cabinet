@@ -26,11 +26,9 @@ SECRET_KEY = 'django-insecure-ipd&7!p1(m2m5(#lk&$ryll$je$i=!kl7&d*7e%lgxco+i*nl9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'https://back-end-my-medicine-cabinet.onrender.com/']
 
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
 
 # Application definition
 
