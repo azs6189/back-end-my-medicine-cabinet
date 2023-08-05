@@ -41,6 +41,7 @@ pickleshare==0.7.5
 pluggy==0.13.1
 prompt-toolkit==3.0.36
 psycopg2==2.9.6
+psycopg2-binary==2.9.6
 ptyprocess==0.7.0
 pure-eval==0.2.2
 py==1.11.0
@@ -64,5 +65,6 @@ typing_extensions==4.7.1
 urllib3==1.26.4
 wcwidth==0.2.6
 Werkzeug==1.0.1
+whitenoise==6.5.0
 wonderwords==2.2.0
 zipp==3.16.2
