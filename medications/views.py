@@ -22,15 +22,15 @@ class MedicationList(APIView):
     def get(self, request, format=None):
         medications = Medication.objects.all()
         serializer = MedicationSerializer(medications, many=True)
-        return Response(serializer.data)
+        return JsonResponse(serializer.data, safe=False)
     
     def post(self, request, format=None):
         # data = JSONParser().parse(request)
         serializer = MedicationSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class MedicationDetail(APIView):
     """
@@ -46,17 +46,17 @@ class MedicationDetail(APIView):
     def get(self, request, pk):
         medication = self.get_object(pk)
         serializer = MedicationSerializer(medication)
-        return Response(serializer.data, status = 201)
+        return JsonResponse(serializer.data, status = 201)
     
     def put(self, request, pk):
         medication = self.get_object(pk)
         serializer = MedicationSerializer(medication, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status = 201)
-        return Response(serializer.errors, status = 400)
+            return JsonResponse(serializer.data, status = 201)
+        return JsonResponse(serializer.errors, status = 400)
     
     def delete(self, request, pk):
         medication = self.get_object(pk)
         medication.delete()
-        return Response(status = 204)
+        return JsonResponse(status = 204)
