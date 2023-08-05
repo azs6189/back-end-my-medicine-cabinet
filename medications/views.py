@@ -6,7 +6,7 @@ from medications.models import Medication, MedicationSerializer
 from rest_framework.response import Response
 from django.http import Http404
 from rest_framework import status
-import psycopg2 #directly being used to interact with the PostgreSQL database in the MedicationList and MedicationDetail views to retrieve, create, update, and delete medication instances
+# import psycopg2 #directly being used to interact with the PostgreSQL database in the MedicationList and MedicationDetail views to retrieve, create, update, and delete medication instances
 
 # from django.template import loader
 
