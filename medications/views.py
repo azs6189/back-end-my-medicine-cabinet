@@ -6,14 +6,6 @@ from medications.models import Medication, MedicationSerializer
 from rest_framework.response import Response
 from django.http import Http404
 from rest_framework import status
-# import psycopg2 #directly being used to interact with the PostgreSQL database in the MedicationList and MedicationDetail views to retrieve, create, update, and delete medication instances
-
-# from django.template import loader
-
-# Create your views here.
-# def medications(request):
-#     template = loader.get_template('myfirst.html')
-#     return HttpResponse(template.render())
 
 class MedicationList(APIView):
     """
