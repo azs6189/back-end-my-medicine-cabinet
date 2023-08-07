@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'medicine_cabinet.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         # 'NAME': BASE_DIR / 'db.sqlite3',
@@ -93,15 +93,15 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '',
     }
-}
+}'''
 
 # Render PostgreSQL database (Live)
-# import dj_database_url
+import dj_database_url
 
-# DATABASES = {
-#     # 'default': os.getenv('DATABASE_URL')
-#     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
-# }
+DATABASES = {
+    # 'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    'default': dj_database_url.parse(env('DATABASE_URL'))
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
