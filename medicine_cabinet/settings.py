@@ -65,7 +65,8 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     # "https://example.com",
     # "https://frontend.example.com",
-    "http://localhost:3000",  # Example for local development
+    # "http://localhost:3000",  # Example for local development
+    os.environ.get("CORS_ALLOWED_ORIGINS", "http://localhost:3000"),
 ]
 
 ROOT_URLCONF = 'medicine_cabinet.urls'
