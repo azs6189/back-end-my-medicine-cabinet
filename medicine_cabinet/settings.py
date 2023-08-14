@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'medications'
+    'medications',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOW_ALL_ORIGINS = False
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000" # Add your frontend's address here
 ]
 
 ROOT_URLCONF = 'medicine_cabinet.urls'
@@ -83,7 +91,7 @@ WSGI_APPLICATION = 'medicine_cabinet.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-'''DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         # 'NAME': BASE_DIR / 'db.sqlite3',
@@ -93,15 +101,15 @@ WSGI_APPLICATION = 'medicine_cabinet.wsgi.application'
         'HOST': 'localhost',
         'PORT': '',
     }
-}'''
-
-# Render PostgreSQL database (Live)
-import dj_database_url
-
-DATABASES = {
-    # 'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
-    'default': dj_database_url.parse(env('DATABASE_URL'))
 }
+
+# # Render PostgreSQL database (Live)
+# import dj_database_url
+
+# DATABASES = {
+#     # 'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+#     'default': dj_database_url.parse(env('DATABASE_URL'))
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
