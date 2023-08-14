@@ -6,6 +6,7 @@ from medications.models import Medication, MedicationSerializer
 from rest_framework.response import Response
 from django.http import Http404
 from rest_framework import status
+from .models import Medication
 
 class MedicationList(APIView):
     """
@@ -52,3 +53,14 @@ class MedicationDetail(APIView):
         medication = self.get_object(pk)
         medication.delete()
         return JsonResponse(status = 204)
+    
+class SearchMedications(APIView):
+    def get(self, request):
+        brand_name = request.query_params.get('brand_name', None)
+
+        if brand_name:
+            medications = Medication.objects.filter(brand_name__icontains=brand_name)
+            serializer = MedicationSerializer(medications, many=True)
+            return Response(serializer.data)
+        else:
+            return Response("No medications found", status=status.HTTP_404_NOT_FOUND)
