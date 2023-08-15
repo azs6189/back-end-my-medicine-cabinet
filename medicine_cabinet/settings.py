@@ -64,7 +64,7 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000" # Add your frontend's address here
+    "http://localhost:3000", "https://azs6189.github.io/front-end-my-medicine-cabinet/" # Add your frontend's address here
 ]
 
 ROOT_URLCONF = 'medicine_cabinet.urls'
